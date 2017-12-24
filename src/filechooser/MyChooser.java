@@ -117,6 +117,8 @@ public class MyChooser extends Application
                 if (getImageViewHashCode() == fileView.hashCode())
                 {
                     path += ("\\" + getName());
+                    //TO DO:
+                    //1.send path to server
                     primaryStage.close();
                 }
                 //if it's a BACK:
@@ -142,6 +144,16 @@ public class MyChooser extends Application
             }
         });
         gridPane.add(open,1,3);
+
+        //cancel button:
+        Button cancel = new Button("CANCEL");
+        cancel.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                primaryStage.close();
+            }
+        });
+        gridPane.add(cancel, 2,3);
 
         scene = new Scene(gridPane);
         primaryStage.setScene(scene);
