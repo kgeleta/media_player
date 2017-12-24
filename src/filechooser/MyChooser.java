@@ -13,8 +13,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import serializer.MyFile;
+import serializer.MySerializer;
 
 import java.io.File;
+import java.util.ArrayList;
+
+import static serializer.MySerializer.serializeToString;
 
 
 public class MyChooser extends Application
@@ -49,12 +54,19 @@ public class MyChooser extends Application
         vBox.getChildren().clear();
     }
 
-    private File[] askServer(String path)
+    private ArrayList<MyFile> askServer(String path)
     {
-        return new File(path).listFiles();
+        //TO DO:
+        //1.connect to server
+        //2.send path to server
+        //3.get list of files as String
+        //4.serialize String to ArrayList<MyFiles>
+        //5.return
+        String serversAnswer =  MySerializer.serializeToString(new File(path).listFiles());
+        return MySerializer.serializeToMyFile(serversAnswer);
     }
 
-    private void listFiles(File[] files)
+    private void listFiles(ArrayList<MyFile> files)
     {
         //Create "BACK" button:
         RadioButton back = new RadioButton("BACK");
@@ -66,10 +78,8 @@ public class MyChooser extends Application
         //List all files and directories in path:
         if (files == null)
             return;
-        for(File file : files)
+        for(MyFile file : files)
         {
-            if (!file.isHidden())
-            {
                 RadioButton button = new RadioButton(file.getName());
                 if (file.isFile())
                     button.setGraphic(new ImageView(fileView));
@@ -77,7 +87,6 @@ public class MyChooser extends Application
                     button.setGraphic(new ImageView(folderView));
                 button.setToggleGroup(radioButtons);
                 vBox.getChildren().add(button);
-            }
         }
     }
 
@@ -127,9 +136,8 @@ public class MyChooser extends Application
                 }
 
                 //list files:
-                File[] files = askServer(path);
                 clearVbox();
-                listFiles(files);
+                listFiles(askServer(path));
                 scrollPane.setContent(vBox);
             }
         });
