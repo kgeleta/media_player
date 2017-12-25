@@ -53,16 +53,5 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
-       /* File file = new File("\\Projects");
-        File[] listOfFiles = file.listFiles();
-
-        for (File f : listOfFiles)
-        {
-            if (f.isDirectory())
-                System.out.println("Dir: " + f.getName());
-            else if (f.isFile())
-                System.out.println("File: " + f.getName());
-        }
-        System.exit(0);*/
     }
 }

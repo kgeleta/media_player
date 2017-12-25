@@ -1,5 +1,6 @@
 package connection;
 
+import serializer.MyFileFilter;
 import serializer.MySerializer;
 
 import java.io.File;
@@ -16,10 +17,8 @@ public class MultimediaProtocol
     public String processInput(String input)
     {
         if ((matcher = askPattern.matcher(input)).find())
-        {
-            //TO DO: add file filter
-            return MySerializer.serializeToString(new File(matcher.group(1)).listFiles());
-        }
+            return MySerializer.serializeToString(new File(matcher.group(1)).listFiles(new MyFileFilter()));
+
         else if ((matcher = openPattern.matcher(input)).find())
         {
             //TO DO:

@@ -59,17 +59,4 @@ public class MultimediaClient
         out.println("BACKWARD");
         return in.readLine();
     }
-
-    public static void main(String[] args) {
-        MultimediaClient mc = new MultimediaClient();
-        try {
-            mc.start("localhost", 6666);
-            System.out.println(mc.ask("\\"));
-            System.out.println(mc.play());
-            mc.close();
-        } catch (IOException ioe)
-            {
-                System.out.println("jeblo");
-            }
-    }
 }
