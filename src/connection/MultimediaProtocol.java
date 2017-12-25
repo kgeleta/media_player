@@ -45,6 +45,10 @@ public class MultimediaProtocol
             //TO DO:
             //skip multimedia 5sec backward
         }
+        else if (input.equals("EXIT"))
+        {
+            return "EXIT";
+        }
         return null;
     }
 }
