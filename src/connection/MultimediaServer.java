@@ -1,12 +1,13 @@
 package connection;
 
+
 import java.io.*;
 import java.net.*;
 
 public class MultimediaServer
 {
     //TO DO:
-    //give pointer to GUI app to change status
+    //make gui
 
     public void start(int port) throws IOException
     {
