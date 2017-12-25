@@ -1,22 +1,40 @@
 package sample;
 
+import filechooser.MyChooser;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.paint.Color;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-import java.io.File;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Hello World");
-        Scene scene = new Scene(root, 300, 275);
+
+        GridPane gridPane = new GridPane();
+        gridPane.setMinSize(300,275);
+        Button open = new Button("OPEN...");
+        open.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                MyChooser myChooser = new MyChooser();
+                try {
+                    Stage myChooserStage = new Stage();
+                    myChooser.start(myChooserStage);
+                }catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+            }
+        });
+        gridPane.add(open,1,1);
+        Scene scene = new Scene(gridPane);
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }

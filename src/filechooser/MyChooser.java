@@ -19,15 +19,12 @@ import serializer.MySerializer;
 import java.io.File;
 import java.util.ArrayList;
 
-import static serializer.MySerializer.serializeToString;
-
 
 public class MyChooser extends Application
 {
-    GridPane gridPane = new GridPane();
-    VBox vBox = new VBox(8);
-    Scene scene;
-    ToggleGroup radioButtons = new ToggleGroup();
+    private GridPane gridPane = new GridPane();
+    private VBox vBox = new VBox(8);
+    private ToggleGroup radioButtons = new ToggleGroup();
 
 
     //Icons:
@@ -155,7 +152,7 @@ public class MyChooser extends Application
         });
         gridPane.add(cancel, 2,3);
 
-        scene = new Scene(gridPane);
+        Scene scene = new Scene(gridPane);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
