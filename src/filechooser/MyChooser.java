@@ -1,5 +1,6 @@
 package filechooser;
 
+import connection.MultimediaClient;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,11 +18,13 @@ import serializer.MyFile;
 import serializer.MySerializer;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class MyChooser extends Application
 {
+    private MultimediaClient multimediaClient;
     private GridPane gridPane = new GridPane();
     private VBox vBox = new VBox(8);
     private ToggleGroup radioButtons = new ToggleGroup();
@@ -35,6 +38,11 @@ public class MyChooser extends Application
     //Paths:
     private final String rootPath = "\\";
     private String path = "\\";
+
+    public MyChooser(MultimediaClient _multimediaClient)
+    {
+        multimediaClient = _multimediaClient;
+    }
 
     private String getName()
     {
@@ -53,13 +61,14 @@ public class MyChooser extends Application
 
     private ArrayList<MyFile> askServer(String path)
     {
-        //TO DO:
-        //1.connect to server
-        //2.send path to server
-        //3.get list of files as String
-        //4.serialize String to ArrayList<MyFiles>
-        //5.return
-        String serversAnswer =  MySerializer.serializeToString(new File(path).listFiles());
+        String serversAnswer =  null;
+        try
+        {
+            serversAnswer = multimediaClient.ask(path);
+        }catch (IOException ioe)
+            {
+                //maybe later
+            }
         return MySerializer.serializeToMyFile(serversAnswer);
     }
 
