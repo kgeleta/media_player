@@ -30,11 +30,42 @@ public class MultimediaClient
         return in.readLine();
     }
 
+    public String open(String path) throws IOException
+    {
+        out.println("OPEN " + path);
+        return in.readLine();
+    }
+
+    public String play() throws IOException
+    {
+        out.println("PLAY");
+        return in.readLine();
+    }
+
+    public String pause() throws IOException
+    {
+        out.println("PAUSE");
+        return in.readLine();
+    }
+
+    public String forward() throws IOException
+    {
+        out.println("FORWARD");
+        return in.readLine();
+    }
+
+    public String backward() throws IOException
+    {
+        out.println("BACKWARD");
+        return in.readLine();
+    }
+
     public static void main(String[] args) {
         MultimediaClient mc = new MultimediaClient();
         try {
             mc.start("localhost", 6666);
             System.out.println(mc.ask("\\"));
+            System.out.println(mc.play());
             mc.close();
         } catch (IOException ioe)
             {

@@ -29,6 +29,7 @@ public class MultimediaProtocol
         {
             //TO DO:
             //play multimedia
+            return "playing";
         }
         else if (input.equals("PAUSE"))
         {
