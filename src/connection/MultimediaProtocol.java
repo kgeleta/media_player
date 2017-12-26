@@ -35,16 +35,19 @@ public class MultimediaProtocol
         {
             //TO DO:
             //pause multimedia
+            return "true";
         }
         else if (input.equals("FORWARD"))
         {
             //TO DO:
             //skip multimedia 5sec forward
+            return "true";
         }
         else if (input.equals("BACKWARD"))
         {
             //TO DO:
             //skip multimedia 5sec backward
+            return "true";
         }
         else if (input.equals("EXIT"))
         {

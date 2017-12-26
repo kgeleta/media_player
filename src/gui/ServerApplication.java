@@ -17,13 +17,13 @@ public class ServerApplication extends Application
     private ServerApplication myself = this;
     private boolean serverStarted = false;
     private Button start = new Button("START");
-    private Label statusLabel = new Label("");
+    private Label statusLabel = new Label("Not connected");
 
     public synchronized void reset()
     {
         serverStarted = false;
         start.setVisible(true);
-        statusLabel.setVisible(false);
+        statusLabel.setText("Not connected");
     }
 
     public synchronized void setStatus(String status)
@@ -61,15 +61,12 @@ public class ServerApplication extends Application
                     Thread thread = new Thread(new RunnableServer(myself));
                     thread.start();
                     start.setVisible(false);
-                    statusLabel.setVisible(true);
                 }
             }
         });
 
         vBox.getChildren().add(statusLabel);
         vBox.getChildren().add(start);
-
-        statusLabel.setVisible(false);
 
         Scene scene = new Scene(vBox);
         primaryStage.setScene(scene);

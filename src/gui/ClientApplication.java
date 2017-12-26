@@ -57,7 +57,14 @@ public class ClientApplication extends Application
                     }
                 if (multimediaClient.isConnected())
                 {
-                    System.out.println("Connected!");
+                    ControllerApplication controllerApplication = new ControllerApplication(multimediaClient);
+                    try
+                    {
+                    controllerApplication.start(new Stage());
+                    } catch (Exception e)
+                        {
+                            //deal with it
+                        }
                 }
             }
         });
