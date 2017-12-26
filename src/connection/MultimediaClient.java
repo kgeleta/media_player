@@ -16,12 +16,20 @@ public class MultimediaClient
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     }
 
+    public boolean isConnected()
+    {
+        return socket!=null && socket.isConnected();
+    }
+
     public void close() throws IOException
     {
-        out.println("EXIT");
-        out.close();
-        in.close();
-        socket.close();
+        if (socket != null && out != null && in != null)
+        {
+            out.println("EXIT");
+            out.close();
+            in.close();
+            socket.close();
+        }
     }
 
     public String ask(String path) throws IOException
