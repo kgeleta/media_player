@@ -28,7 +28,7 @@ public class MyChooser extends Application
     private GridPane gridPane = new GridPane();
     private VBox vBox = new VBox(8);
     private ToggleGroup radioButtons = new ToggleGroup();
-
+    private boolean chosen = false;
 
     //Icons:
     private Image folderView = new Image(new File("icons\\folder.png").toURI().toString());
@@ -42,6 +42,11 @@ public class MyChooser extends Application
     public MyChooser(MultimediaClient _multimediaClient)
     {
         multimediaClient = _multimediaClient;
+    }
+
+    public boolean isChosen()
+    {
+        return chosen;
     }
 
     private String getName()
@@ -123,9 +128,19 @@ public class MyChooser extends Application
                 if (getImageViewHashCode() == fileView.hashCode())
                 {
                     path += ("\\" + getName());
-                    //TO DO:
-                    //1.send path to server
-                    primaryStage.close();
+                    String answer = "";
+                    try
+                    {
+                        answer = multimediaClient.open(path);
+                    } catch (IOException ioe)
+                        {
+                            //ignore
+                        }
+                        if (answer.equals("true"))
+                        {
+                            chosen = true;
+                            primaryStage.close();
+                        }
                 }
                 //if it's a BACK:
                 else if (getImageViewHashCode() == backView.hashCode())

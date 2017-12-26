@@ -23,6 +23,7 @@ public class MultimediaProtocol
         {
             //TO DO:
             //open multimedia
+            return "true";
         }
         else if (input.equals("PLAY"))
         {
