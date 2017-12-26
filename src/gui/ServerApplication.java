@@ -2,6 +2,7 @@ package gui;
 
 import connection.RunnableServer;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -27,7 +28,7 @@ public class ServerApplication extends Application
 
     public synchronized void setStatus(String status)
     {
-        //statusLabel.setText(status);
+        statusLabel.setText(status);
         //System.out.println("connected!");
     }
 

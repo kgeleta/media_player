@@ -2,6 +2,7 @@ package connection;
 
 
 import gui.ServerApplication;
+import javafx.application.Platform;
 
 import java.io.*;
 import java.net.*;
@@ -17,6 +18,13 @@ public class MultimediaServer
 
     public void start(int port) throws IOException
     {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                serverApplication.setStatus("Waiting...");
+            }
+        });
+
         ServerSocket serverSocket = new ServerSocket(port);
         Socket clientSocket = serverSocket.accept();
 
@@ -26,7 +34,14 @@ public class MultimediaServer
         MultimediaProtocol multimediaProtocol = new MultimediaProtocol();
         String inputLine, outputLine;
 
-        serverApplication.setStatus("Connected!");
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                serverApplication.setStatus("Connected!");
+            }
+        });
+
         while ((inputLine = in.readLine()) != null)
         {
             outputLine = multimediaProtocol.processInput(inputLine);
@@ -39,6 +54,11 @@ public class MultimediaServer
         in.close();
         clientSocket.close();
         serverSocket.close();
-        serverApplication.reset();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                serverApplication.reset();
+            }
+        });
     }
 }
