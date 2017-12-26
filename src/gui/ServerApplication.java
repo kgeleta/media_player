@@ -29,7 +29,6 @@ public class ServerApplication extends Application
     public synchronized void setStatus(String status)
     {
         statusLabel.setText(status);
-        //System.out.println("connected!");
     }
 
     @Override
