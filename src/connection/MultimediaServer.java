@@ -8,6 +8,13 @@ import java.net.*;
 
 public class MultimediaServer
 {
+    private ServerApplication serverApplication;
+
+    public MultimediaServer(ServerApplication serverApplication)
+    {
+        this.serverApplication = serverApplication;
+    }
+
     public void start(int port) throws IOException
     {
         ServerSocket serverSocket = new ServerSocket(port);
@@ -19,6 +26,7 @@ public class MultimediaServer
         MultimediaProtocol multimediaProtocol = new MultimediaProtocol();
         String inputLine, outputLine;
 
+        serverApplication.setStatus("Connected!");
         while ((inputLine = in.readLine()) != null)
         {
             outputLine = multimediaProtocol.processInput(inputLine);
@@ -31,5 +39,6 @@ public class MultimediaServer
         in.close();
         clientSocket.close();
         serverSocket.close();
+        serverApplication.reset();
     }
 }
