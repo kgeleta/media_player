@@ -35,13 +35,18 @@ public class MultimediaServer
     }
 
     public static void main(String[] args) {
-        MultimediaServer ms = new MultimediaServer();
+        /*MultimediaServer ms = new MultimediaServer();
         try
         {
             ms.start(6666);
         }catch (IOException ioe)
         {
             System.out.println("jeblo");
-        }
+        }*/
+
+        //Threads:
+        Thread thread = new Thread(new RunnableServer());
+        thread.start();
+        System.out.println("hello");
     }
 }
