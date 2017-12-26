@@ -11,6 +11,7 @@ import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,16 +26,13 @@ public class ControllerApplication extends Application
         multimediaClient = _multimediaClient;
     }
 
-    //delete later:
-    public ControllerApplication(){}
-
     @Override
     public void start(Stage primaryStage) throws Exception
     {
         primaryStage.setTitle("Controller");
 
         GridPane gridPane = new GridPane();
-        gridPane.setMinSize(300,500);
+        gridPane.setMinSize(245,250);
         gridPane.setVgap(10);
         gridPane.setHgap(10);
 
@@ -112,12 +110,21 @@ public class ControllerApplication extends Application
 
 
         //Add buttons:
+        HBox hbox1 = new HBox();
+        hbox1.setAlignment(Pos.CENTER);
+        hbox1.getChildren().add(open);
+        gridPane.add(hbox1,0,0);
 
-        gridPane.add(open,0,0);
-        gridPane.add(play,0,1);
-        gridPane.add(pause,1,1);
-        gridPane.add(back,0,2);
-        gridPane.add(forward,1,2);
+        HBox hbox2 = new HBox(10);
+        hbox2.setAlignment(Pos.CENTER);
+        hbox2.getChildren().addAll(play, pause);
+        gridPane.add(hbox2,0,1);
+
+        HBox hbox3 = new HBox(10);
+        hbox3.setAlignment(Pos.CENTER);
+        hbox3.getChildren().addAll(back, forward);
+        gridPane.add(hbox3,0,2);
+
         Scene scene = new Scene(gridPane);
         //style:
         String style = getClass().getResource("controllerapplication.css").toExternalForm();
