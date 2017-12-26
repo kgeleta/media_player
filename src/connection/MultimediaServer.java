@@ -1,14 +1,13 @@
 package connection;
 
 
+import gui.ServerApplication;
+
 import java.io.*;
 import java.net.*;
 
 public class MultimediaServer
 {
-    //TO DO:
-    //make gui
-
     public void start(int port) throws IOException
     {
         ServerSocket serverSocket = new ServerSocket(port);
@@ -32,21 +31,5 @@ public class MultimediaServer
         in.close();
         clientSocket.close();
         serverSocket.close();
-    }
-
-    public static void main(String[] args) {
-        /*MultimediaServer ms = new MultimediaServer();
-        try
-        {
-            ms.start(6666);
-        }catch (IOException ioe)
-        {
-            System.out.println("jeblo");
-        }*/
-
-        //Threads:
-        Thread thread = new Thread(new RunnableServer());
-        thread.start();
-        System.out.println("hello");
     }
 }

@@ -1,5 +1,7 @@
 package connection;
 
+import gui.ServerApplication;
+
 import java.io.IOException;
 
 public class RunnableServer implements Runnable

@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 public class ServerApplication extends Application
 {
     private boolean serverStarted = false;
+    private Button start = new Button("START");
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -23,7 +24,7 @@ public class ServerApplication extends Application
         vBox.setAlignment(Pos.CENTER);
         vBox.setMinSize(300,275);
 
-        Button start = new Button("START");
+
         start.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -32,6 +33,7 @@ public class ServerApplication extends Application
                     serverStarted = true;
                     Thread thread = new Thread(new RunnableServer());
                     thread.start();
+                    start.setVisible(false);
                 }
             }
         });
@@ -40,5 +42,10 @@ public class ServerApplication extends Application
         Scene scene = new Scene(vBox);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        System.exit(0);
     }
 }
