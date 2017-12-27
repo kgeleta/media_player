@@ -65,6 +65,7 @@ public class ClientApplication extends Application
                         {
                             //deal with it
                         }
+                    primaryStage.hide();
                 }
             }
         });
