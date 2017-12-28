@@ -40,6 +40,12 @@ public class MyMediaPlayer extends Application {
         mediaPlayer.dispose();
     }
 
+    public void closeWindow()
+    {
+        Stage stage = ((Stage) mediaView.getScene().getWindow());
+        stage.close();
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("My Player");

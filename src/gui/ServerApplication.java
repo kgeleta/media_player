@@ -46,6 +46,7 @@ public class ServerApplication extends Application
         {
             try{
             myMediaPlayer.stopVideo();
+            myMediaPlayer.closeWindow();
             myMediaPlayer.stop();
             } catch (Exception e)
             {}
