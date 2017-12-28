@@ -5,11 +5,11 @@ import java.io.FileFilter;
 
 public class MyFileFilter implements FileFilter
 {
-    private final String extension = ".mp4";
+    private final String extension1 = ".mp4", extension2 = ".flv";
 
     @Override
     public boolean accept(File pathname)
     {
-            return pathname.isDirectory() || pathname.getName().toLowerCase().endsWith(extension);
+            return pathname.isDirectory() || pathname.getName().toLowerCase().endsWith(extension1) || pathname.getName().toLowerCase().endsWith(extension2);
     }
 }

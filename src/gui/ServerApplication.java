@@ -12,6 +12,9 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+//TO DO
+//open mymediaplayer
+
 public class ServerApplication extends Application
 {
     private ServerApplication myself = this;

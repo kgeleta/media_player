@@ -12,7 +12,7 @@ public class MultimediaProtocol
     private final Pattern askPattern = Pattern.compile("ASK (.+)");
     private final Pattern openPattern = Pattern.compile("OPEN (.+)");
     private Matcher matcher;
-    //private MultimediaPlayer;
+
 
     public String processInput(String input)
     {
