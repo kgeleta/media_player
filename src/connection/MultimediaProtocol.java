@@ -1,5 +1,7 @@
 package connection;
 
+import gui.ServerApplication;
+import javafx.application.Platform;
 import serializer.MyFileFilter;
 import serializer.MySerializer;
 
@@ -12,6 +14,12 @@ public class MultimediaProtocol
     private final Pattern askPattern = Pattern.compile("ASK (.+)");
     private final Pattern openPattern = Pattern.compile("OPEN (.+)");
     private Matcher matcher;
+    private ServerApplication serverApplication;
+
+    public MultimediaProtocol(ServerApplication _serverApplication)
+    {
+        serverApplication = _serverApplication;
+    }
 
 
     public String processInput(String input)
@@ -21,20 +29,32 @@ public class MultimediaProtocol
 
         else if ((matcher = openPattern.matcher(input)).find())
         {
-            //TO DO:
-            //open multimedia
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    serverApplication.open(matcher.group(1));
+                }
+            });
             return "true";
         }
         else if (input.equals("PLAY"))
         {
-            //TO DO:
-            //play multimedia
-            return "playing";
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    serverApplication.play();
+                }
+            });
+            return "true";
         }
         else if (input.equals("PAUSE"))
         {
-            //TO DO:
-            //pause multimedia
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    serverApplication.pause();
+                }
+            });
             return "true";
         }
         else if (input.equals("FORWARD"))
@@ -51,6 +71,12 @@ public class MultimediaProtocol
         }
         else if (input.equals("EXIT"))
         {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    serverApplication.close();
+                }
+            });
             return "EXIT";
         }
         return null;

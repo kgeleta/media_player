@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import player.MyMediaPlayer;
 
 //TO DO
 //open mymediaplayer
@@ -21,6 +22,48 @@ public class ServerApplication extends Application
     private boolean serverStarted = false;
     private Button start = new Button("START");
     private Label statusLabel = new Label("Not connected");
+    private Stage playerStage = new Stage();
+    private MyMediaPlayer myMediaPlayer = null;
+
+    public synchronized void open(String path)
+    {
+        if (myMediaPlayer == null)
+        {
+            myMediaPlayer = new MyMediaPlayer(path);
+            try
+            {
+                myMediaPlayer.start(playerStage);
+            } catch (Exception e)
+            {
+                //ignore
+            }
+        }
+    }
+
+    public synchronized void close()
+    {
+        if (myMediaPlayer != null)
+        {
+            try{
+            myMediaPlayer.stopVideo();
+            myMediaPlayer.stop();
+            } catch (Exception e)
+            {}
+            myMediaPlayer =  null;
+        }
+    }
+
+    public synchronized void play()
+    {
+        if (myMediaPlayer != null)
+            myMediaPlayer.play();
+    }
+
+    public synchronized void pause()
+    {
+        if (myMediaPlayer != null)
+            myMediaPlayer.pause();
+    }
 
     public synchronized void reset()
     {

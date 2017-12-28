@@ -1,7 +1,5 @@
 package sample;
 
-import connection.MultimediaClient;
-import filechooser.MyChooser;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,17 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import player.MyMediaPlayer;
 
 
 public class Main extends Application {
-
-    private MultimediaClient multimediaClient = new MultimediaClient();
+    private MyMediaPlayer myMediaPlayer;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Hello World");
 
-        multimediaClient.start("localhost", 6666);
 
         GridPane gridPane = new GridPane();
         gridPane.setMinSize(300,275);
@@ -27,10 +24,10 @@ public class Main extends Application {
         open.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                MyChooser myChooser = new MyChooser(multimediaClient);
+                myMediaPlayer = new MyMediaPlayer("\\php\\test.flv");
                 try {
                     Stage myChooserStage = new Stage();
-                    myChooser.start(myChooserStage);
+                    myMediaPlayer.start(myChooserStage);
                 }catch (Exception e)
                     {
                         System.out.println(e.getMessage());
@@ -38,17 +35,31 @@ public class Main extends Application {
             }
         });
         gridPane.add(open,1,1);
+
+        Button pause = new Button("PAUSE");
+        pause.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                myMediaPlayer.pause();
+            }
+        });
+        gridPane.add(pause,1,2);
+
+        Button play = new Button("PLAY");
+        play.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                myMediaPlayer.play();
+            }
+        });
+        gridPane.add(play,1,3);
+
+
+
         Scene scene = new Scene(gridPane);
 
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    @Override
-    public void stop() throws Exception {
-        multimediaClient.close();
-        super.stop();
-        System.out.println("Stop method");
     }
 
     public static void main(String[] args) {

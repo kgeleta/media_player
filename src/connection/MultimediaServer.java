@@ -31,7 +31,7 @@ public class MultimediaServer
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
         BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-        MultimediaProtocol multimediaProtocol = new MultimediaProtocol();
+        MultimediaProtocol multimediaProtocol = new MultimediaProtocol(serverApplication);
         String inputLine, outputLine;
 
 
