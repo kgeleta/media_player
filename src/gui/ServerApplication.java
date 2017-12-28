@@ -40,6 +40,12 @@ public class ServerApplication extends Application
         }
     }
 
+    public synchronized String isPlaying()
+    {
+        return myMediaPlayer.isPlaying();
+    }
+
+
     public synchronized void close()
     {
         if (myMediaPlayer != null)

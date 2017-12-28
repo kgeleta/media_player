@@ -69,6 +69,11 @@ public class MultimediaProtocol
             //skip multimedia 5sec backward
             return "true";
         }
+        else if (input.equals("ISPLAYING"))
+        {
+            return serverApplication.isPlaying();
+
+        }
         else if (input.equals("EXIT"))
         {
             Platform.runLater(new Runnable() {

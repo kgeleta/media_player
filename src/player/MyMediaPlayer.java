@@ -37,13 +37,21 @@ public class MyMediaPlayer extends Application {
     public void stopVideo()
     {
         mediaPlayer.stop();
-        mediaPlayer.dispose();
     }
 
     public void closeWindow()
     {
+        mediaPlayer.dispose();
         Stage stage = ((Stage) mediaView.getScene().getWindow());
         stage.close();
+    }
+
+    public String isPlaying()
+    {
+        if (mediaPlayer.getStatus().equals(MediaPlayer.Status.PLAYING))
+            return "true";
+        else
+            return "false";
     }
 
     @Override

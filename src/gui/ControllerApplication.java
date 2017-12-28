@@ -10,6 +10,9 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -27,6 +30,7 @@ public class ControllerApplication extends Application
         multimediaClient = _multimediaClient;
     }
 
+   // public ControllerApplication(){}
 
     @Override
     public void start(Stage primaryStage) throws Exception
@@ -127,6 +131,22 @@ public class ControllerApplication extends Application
         vbox.getChildren().add(hbox3);
 
         Scene scene = new Scene(vbox);
+
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, event ->
+        {
+            if (event.getCode() == KeyCode.SPACE)
+            {
+                event.consume();
+                try {
+                    if (multimediaClient.isPlaying().equals("true"))
+                        multimediaClient.pause();
+                    else if (multimediaClient.isPlaying().equals("false"))
+                        multimediaClient.play();
+                } catch (IOException ioe){}
+            }
+        }
+        );
+
         //style:
         String style = getClass().getResource("controllerapplication.css").toExternalForm();
         scene.getStylesheets().add(style);

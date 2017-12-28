@@ -67,4 +67,10 @@ public class MultimediaClient
         out.println("BACKWARD");
         return in.readLine();
     }
+
+    public String isPlaying() throws IOException
+    {
+        out.println("ISPLAYING");
+        return in.readLine();
+    }
 }
