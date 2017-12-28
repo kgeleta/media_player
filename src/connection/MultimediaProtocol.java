@@ -59,14 +59,22 @@ public class MultimediaProtocol
         }
         else if (input.equals("FORWARD"))
         {
-            //TO DO:
-            //skip multimedia 5sec forward
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    serverApplication.forward();
+                }
+            });
             return "true";
         }
         else if (input.equals("BACKWARD"))
         {
-            //TO DO:
-            //skip multimedia 5sec backward
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    serverApplication.backward();
+                }
+            });
             return "true";
         }
         else if (input.equals("ISPLAYING"))

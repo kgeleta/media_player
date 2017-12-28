@@ -9,6 +9,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 
@@ -52,6 +53,16 @@ public class MyMediaPlayer extends Application {
             return "true";
         else
             return "false";
+    }
+
+    public void forward()
+    {
+        mediaPlayer.seek(new Duration((mediaPlayer.getCurrentTime().toSeconds() + 5)*1000));
+    }
+
+    public void backward()
+    {
+        mediaPlayer.seek(new Duration((mediaPlayer.getCurrentTime().toSeconds() - 5)*1000));
     }
 
     @Override

@@ -72,6 +72,18 @@ public class ServerApplication extends Application
             myMediaPlayer.pause();
     }
 
+    public synchronized void forward()
+    {
+        if (myMediaPlayer != null)
+            myMediaPlayer.forward();
+    }
+
+    public synchronized void backward()
+    {
+        if (myMediaPlayer != null)
+            myMediaPlayer.backward();
+    }
+
     public synchronized void reset()
     {
         serverStarted = false;

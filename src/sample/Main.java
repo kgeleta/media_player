@@ -54,7 +54,14 @@ public class Main extends Application {
         });
         gridPane.add(play,1,3);
 
-
+        Button forward = new Button(">>");
+        forward.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                myMediaPlayer.forward();
+            }
+        });
+        gridPane.add(forward,1,4);
 
         Scene scene = new Scene(gridPane);
 

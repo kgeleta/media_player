@@ -144,6 +144,20 @@ public class ControllerApplication extends Application
                         multimediaClient.play();
                 } catch (IOException ioe){}
             }
+            else if (event.getCode() == KeyCode.RIGHT)
+            {
+                try
+                {
+                    multimediaClient.forward();
+                } catch (IOException ioe) {}
+            }
+            else if (event.getCode() == KeyCode.LEFT)
+            {
+                try
+                {
+                    multimediaClient.backward();
+                } catch (IOException ioe){}
+            }
         }
         );
 
