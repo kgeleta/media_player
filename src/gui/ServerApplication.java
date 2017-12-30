@@ -10,8 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import player.MyMediaPlayer;
+
+import java.net.InetAddress;
 
 //TO DO
 //open mymediaplayer
@@ -21,7 +24,8 @@ public class ServerApplication extends Application
     private ServerApplication myself = this;
     private boolean serverStarted = false;
     private Button start = new Button("START");
-    private Label statusLabel = new Label("Not connected");
+    private String defaultText;
+    private Label statusLabel = new Label();
     private Stage playerStage = new Stage();
     private MyMediaPlayer myMediaPlayer = null;
 
@@ -88,7 +92,7 @@ public class ServerApplication extends Application
     {
         serverStarted = false;
         start.setVisible(true);
-        statusLabel.setText("Not connected");
+        statusLabel.setText(defaultText);
     }
 
     public synchronized void setStatus(String status)
@@ -100,6 +104,11 @@ public class ServerApplication extends Application
     public void start(Stage primaryStage) throws Exception
     {
         primaryStage.setTitle("Server");
+
+        defaultText = "Host name:\n" + InetAddress.getLocalHost().getHostName();
+        statusLabel.setWrapText(true);
+        statusLabel.setTextAlignment(TextAlignment.CENTER);
+        statusLabel.setText(defaultText);
 
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
@@ -114,7 +123,7 @@ public class ServerApplication extends Application
                 "    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );" +
                 "    -fx-text-fill: #395306;-fx-font-size: 30px;");
         vBox.setStyle("-fx-background-color: #373737");
-        statusLabel.setStyle("-fx-text-fill: #b8ee36;-fx-font-size: 45px;");
+        statusLabel.setStyle("-fx-text-fill: #b8ee36;-fx-font-size: 35px;");
 
 
         start.setOnAction(new EventHandler<ActionEvent>() {
