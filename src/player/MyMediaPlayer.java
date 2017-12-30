@@ -91,6 +91,7 @@ public class MyMediaPlayer extends Application {
 
 
         primaryStage.setFullScreen(true);
+        primaryStage.setFullScreenExitHint("");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
