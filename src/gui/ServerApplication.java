@@ -16,8 +16,36 @@ import player.MyMediaPlayer;
 
 import java.net.InetAddress;
 
-//TO DO
-//open mymediaplayer
+/*
+* THIS IS THE SPOOKY SOFTWARE SECURITY T-REX
+* IF YOU HAVE SEEN HIM THEN HE KNOWS YOU ARE VIEWING COPYRIGHTED SOURCE MATERIAL
+* BE WARNED
+* HIS VISION IS BASED ON COPYRIGHT INFRINGEMENT
+
+                                                ____
+       ___                                      .-~. /_"-._
+      `-._~-.                                  / /_ "~o\  :Y
+          \  \                                / : \~x.  ` ')
+           ]  Y                              /  |  Y< ~-.__j
+          /   !                        _.--~T : l  l<  /.-~
+         /   /                 ____.--~ .   ` l /~\ \<|Y
+        /   /             .-~~"        /| .    ',-~\ \L|
+       /   /             /     .^   \ Y~Y \.^>/l_   "--'
+      /   Y           .-"(  .  l__  j_j l_/ /~_.-~    .
+     Y    l          /    \  )    ~~~." / `/"~ / \.__/l_
+     |     \     _.-"      ~-{__     l  :  l._Z~-.___.--~
+     |      ~---~           /   ~~"---\_  ' __[>
+     l  .                _.^   ___     _>-y~
+      \  \     .      .-~   .-~   ~>--"  /
+       \  ~---"            /     ./  _.-'
+        "-.,_____.,_  _.--~\     _.-~
+                    ~~     (   _}
+                           `. ~(
+                             )  \
+                            /,`--'~\--'~\
+                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                   T-Rex
+ */
 
 public class ServerApplication extends Application
 {
