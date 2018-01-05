@@ -30,13 +30,13 @@ public class MyChooser extends Application
     private ToggleGroup radioButtons = new ToggleGroup();
 
     //Icons:
-    private Image folderView = new Image(new File("icons\\folder.png").toURI().toString());
-    private Image fileView = new Image(new File("icons\\file.png").toURI().toString());
-    private Image backView = new Image(new File("icons\\back.png").toURI().toString());
+    private Image folderView = new Image(new File("icons/folder.png").toURI().toString());
+    private Image fileView = new Image(new File("icons/file.png").toURI().toString());
+    private Image backView = new Image(new File("icons/back.png").toURI().toString());
 
     //Paths:
-    private final String rootPath = "\\";
-    private String path = "\\";
+    private final String rootPath = File.separator;
+    private String path = File.separator;
 
     public MyChooser(MultimediaClient _multimediaClient)
     {
@@ -121,7 +121,7 @@ public class MyChooser extends Application
                 //if it's a file:
                 if (getImageViewHashCode() == fileView.hashCode())
                 {
-                    path += ("\\" + getName());
+                    path += (File.separator + getName());
                     String answer = "";
                     try
                     {
@@ -140,7 +140,7 @@ public class MyChooser extends Application
                 {
                     if (!path.equals(rootPath))
                     {
-                        path = path.substring(0, path.lastIndexOf("\\"));
+                        path = path.substring(0, path.lastIndexOf(File.separator));
                         if (path.equals(""))
                             path = rootPath;
                     }
@@ -148,7 +148,7 @@ public class MyChooser extends Application
                 //if it's a folder:
                 else if (getImageViewHashCode() == folderView.hashCode())
                 {
-                    path += path.equals(rootPath) ? getName() : ("\\" + getName());
+                    path += path.equals(rootPath) ? getName() : (File.separator + getName());
                 }
 
                 //list files:
